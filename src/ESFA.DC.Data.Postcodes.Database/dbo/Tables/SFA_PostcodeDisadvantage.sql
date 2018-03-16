@@ -5,5 +5,5 @@
     [EffectiveFrom] DATE NOT NULL, 
     [EffectiveTo] DATE NULL, 
     [Apprenticeship_Uplift] DECIMAL(7, 2) NULL, 
-    CONSTRAINT [FK_SFA_PostcodeDisadvantage_Postcodes] FOREIGN KEY ([Postcode]) REFERENCES [Postcodes]([Postcode])
+    CONSTRAINT [FK_SFA_PostcodeDisadvantage_Postcodes] FOREIGN KEY ([Postcode]) REFERENCES [MasterPostcodes]([Postcode])
 )

@@ -63,7 +63,7 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Postcodes.sql" />
+    <Build Include="dbo\Tables\MasterPostcodes.sql" />
     <Build Include="dbo\Tables\EFA_PostcodeAreaCost.sql" />
     <Build Include="dbo\Tables\EFA_PostcodeDisadvantage.sql" />
     <Build Include="dbo\Tables\SFA_PostcodeAreaCost.sql" />

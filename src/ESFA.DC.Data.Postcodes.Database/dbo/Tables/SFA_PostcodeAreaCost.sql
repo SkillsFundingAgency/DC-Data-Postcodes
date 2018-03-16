@@ -5,5 +5,5 @@
     [EffectiveFrom] DATE NOT NULL, 
     [EffectiveTo] DATE NULL, 
     PRIMARY KEY ([Postcode], [EffectiveFrom]), 
-    CONSTRAINT [FK_SFA_PostcodeAreaCost_Postcodes] FOREIGN KEY ([Postcode]) REFERENCES [Postcodes]([Postcode])
+    CONSTRAINT [FK_SFA_PostcodeAreaCost_Postcodes] FOREIGN KEY ([Postcode]) REFERENCES [MasterPostcodes]([Postcode])
 )

@@ -9,5 +9,5 @@
     [EffectiveFrom] DATE NOT NULL, 
     [EffectiveTo] DATE NULL, 
     [Nuts] NVARCHAR(10) NULL, 
-    CONSTRAINT [FK_ONS_Postcodes_Postcodes] FOREIGN KEY ([Postcode]) REFERENCES [Postcodes]([Postcode])
+    CONSTRAINT [FK_ONS_Postcodes_Postcodes] FOREIGN KEY ([Postcode]) REFERENCES [MasterPostcodes]([Postcode])
 )
