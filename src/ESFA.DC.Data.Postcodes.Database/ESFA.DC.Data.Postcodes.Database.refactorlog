@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="610f886f-7ca2-44a2-abb2-3523d16cbdf8" ChangeDateTime="03/16/2018 13:23:06">
+    <Property Name="ElementName" Value="[dbo].[EFA_PostcodeAreaCost].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EFA_PostcodeAreaCost]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Postcode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8b72b87e-b120-481c-9f0f-4a689e1bec25" ChangeDateTime="03/16/2018 13:27:10">
+    <Property Name="ElementName" Value="[dbo].[EFA_PostcodeDisadvantage].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EFA_PostcodeDisadvantage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Postcode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9312e95b-d141-47d9-b7c9-fcebff07d4ce" ChangeDateTime="03/16/2018 13:28:26">
+    <Property Name="ElementName" Value="[dbo].[SFA_PostcodeAreaCost].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SFA_PostcodeAreaCost]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Postcode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="235d2b3f-05d2-44b6-9e84-0776ae3ec4c9" ChangeDateTime="03/16/2018 13:29:45">
+    <Property Name="ElementName" Value="[dbo].[SFA_PostcodeDisadvantage].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SFA_PostcodeDisadvantage]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Postcode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dc862489-dbf9-44c8-876c-dcbc2e4e33e0" ChangeDateTime="03/16/2018 14:13:36">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Postcode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="88892bbd-8c49-4c91-86bb-d5b5a0b703ab" ChangeDateTime="03/16/2018 14:28:44">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[NUTS]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Nuts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="437576b2-2b24-49e4-9e3b-55bd00232af4" ChangeDateTime="03/16/2018 14:28:58">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[LocalEnterprisePartnershipOne]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Lep1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="59155ff1-764a-459e-83ab-7c3344dd5c93" ChangeDateTime="03/16/2018 14:29:10">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[LocalEnterprisePartnershipTwo]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Lep2" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fb84c451-9c86-4a6e-ab4f-fad47287128b" ChangeDateTime="03/16/2018 14:29:18">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[DateOfIntroduction]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IntroductionDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1c6e97d2-76ee-4747-9d0e-8cf9f38f0d82" ChangeDateTime="03/16/2018 14:29:21">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[DateOfTermination]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TerminationDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d3e26989-955d-4d61-8662-cf8929f686a2" ChangeDateTime="03/16/2018 14:29:35">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[IntroductionDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Introduction" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bd751802-6d66-43b4-9862-96d04398983f" ChangeDateTime="03/16/2018 14:29:38">
+    <Property Name="ElementName" Value="[dbo].[ONS_Postcodes].[TerminationDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ONS_Postcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Termination" />
+  </Operation>
+</Operations>
