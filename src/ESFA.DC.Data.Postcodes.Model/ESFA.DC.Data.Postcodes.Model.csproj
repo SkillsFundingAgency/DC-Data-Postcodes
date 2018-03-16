@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="ESFA.DC.Data.Postcodes.Model.nuspec" />
     <None Include="packages.config" />
     <None Include="Postcodes.edmx.diagram">
       <DependentUpon>Postcodes.edmx</DependentUpon>
