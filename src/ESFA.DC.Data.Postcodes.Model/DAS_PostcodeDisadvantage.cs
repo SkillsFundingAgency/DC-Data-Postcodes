@@ -12,7 +12,7 @@ namespace ESFA.DC.Data.Postcodes.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SFA_PostcodeDisadvantage
+    public partial class DAS_PostcodeDisadvantage
     {
         public string Postcode { get; set; }
         public Nullable<decimal> Uplift { get; set; }

@@ -26,6 +26,7 @@ namespace ESFA.DC.Data.Postcodes.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<DAS_PostcodeDisadvantage> DAS_PostcodeDisadvantage { get; set; }
         public virtual DbSet<EFA_PostcodeAreaCost> EFA_PostcodeAreaCost { get; set; }
         public virtual DbSet<EFA_PostcodeDisadvantage> EFA_PostcodeDisadvantage { get; set; }
         public virtual DbSet<MasterPostcode> MasterPostcodes { get; set; }

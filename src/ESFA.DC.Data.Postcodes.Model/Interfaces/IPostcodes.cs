@@ -9,6 +9,7 @@ namespace ESFA.DC.Data.Postcodes.Model.Interfaces
 {
     interface IPostcodes
     {
+        DbSet<DAS_PostcodeDisadvantage> DAS_PostcodeDisadvantage { get; set; }
         DbSet<EFA_PostcodeAreaCost> EFA_PostcodeAreaCost { get; set; }
         DbSet<EFA_PostcodeDisadvantage> EFA_PostcodeDisadvantage { get; set; }
         DbSet<MasterPostcode> MasterPostcodes { get; set; }

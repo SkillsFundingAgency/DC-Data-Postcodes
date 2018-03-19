@@ -69,6 +69,7 @@
     <Build Include="dbo\Tables\SFA_PostcodeAreaCost.sql" />
     <Build Include="dbo\Tables\SFA_PostcodeDisadvantage.sql" />
     <Build Include="dbo\Tables\ONS_Postcodes.sql" />
+    <Build Include="dbo\Tables\DAS_PostcodeDisadvantage.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ESFA.DC.Data.Postcodes.Database.refactorlog" />

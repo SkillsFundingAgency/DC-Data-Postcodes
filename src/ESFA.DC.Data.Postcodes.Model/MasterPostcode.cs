@@ -17,20 +17,27 @@ namespace ESFA.DC.Data.Postcodes.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MasterPostcode()
         {
+            this.DAS_PostcodeDisadvantage = new HashSet<DAS_PostcodeDisadvantage>();
             this.EFA_PostcodeAreaCost = new HashSet<EFA_PostcodeAreaCost>();
             this.EFA_PostcodeDisadvantage = new HashSet<EFA_PostcodeDisadvantage>();
+            this.ONS_Postcodes = new HashSet<ONS_Postcodes>();
             this.SFA_PostcodeAreaCost = new HashSet<SFA_PostcodeAreaCost>();
+            this.SFA_PostcodeDisadvantage = new HashSet<SFA_PostcodeDisadvantage>();
         }
     
         public string Postcode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DAS_PostcodeDisadvantage> DAS_PostcodeDisadvantage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EFA_PostcodeAreaCost> EFA_PostcodeAreaCost { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EFA_PostcodeDisadvantage> EFA_PostcodeDisadvantage { get; set; }
-        public virtual ONS_Postcodes ONS_Postcodes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ONS_Postcodes> ONS_Postcodes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SFA_PostcodeAreaCost> SFA_PostcodeAreaCost { get; set; }
-        public virtual SFA_PostcodeDisadvantage SFA_PostcodeDisadvantage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SFA_PostcodeDisadvantage> SFA_PostcodeDisadvantage { get; set; }
     }
 }
