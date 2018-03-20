@@ -34,6 +34,6 @@ namespace ESFA.DC.Data.Postcodes.Model
         public virtual DbSet<SFA_PostcodeAreaCost> SFA_PostcodeAreaCost { get; set; }
         public virtual DbSet<SFA_PostcodeDisadvantage> SFA_PostcodeDisadvantage { get; set; }
         public virtual DbSet<HMPP_Postcodes> HMPP_Postcodes { get; set; }
-        public virtual DbSet<VersionInfo> VersionInfoes { get; set; }
+        public virtual DbSet<VersionInfo> VersionInfos { get; set; }
     }
 }

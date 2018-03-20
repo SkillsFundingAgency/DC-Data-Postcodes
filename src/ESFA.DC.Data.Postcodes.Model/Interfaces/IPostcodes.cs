@@ -12,6 +12,6 @@ namespace ESFA.DC.Data.Postcodes.Model.Interfaces
         DbSet<SFA_PostcodeAreaCost> SFA_PostcodeAreaCost { get; set; }
         DbSet<SFA_PostcodeDisadvantage> SFA_PostcodeDisadvantage { get; set; }
         DbSet<HMPP_Postcodes> HMPP_Postcodes { get; set; }
-        DbSet<VersionInfo> VersionInfoes { get; set; }
+        DbSet<VersionInfo> VersionInfos { get; set; }
     }
 }

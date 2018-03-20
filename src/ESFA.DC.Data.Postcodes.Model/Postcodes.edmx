@@ -258,7 +258,7 @@
             <End Role="SFA_PostcodeDisadvantage" EntitySet="SFA_PostcodeDisadvantage" />
           </AssociationSet>
           <EntitySet Name="HMPP_Postcodes" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.HMPP_Postcodes" />
-          <EntitySet Name="VersionInfoes" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.VersionInfo" />
+          <EntitySet Name="VersionInfos" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.VersionInfo" />
           <AssociationSet Name="FK_HMPP_Postcodes_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_HMPP_Postcodes_Postcodes">
             <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
             <End Role="HMPP_Postcodes" EntitySet="HMPP_Postcodes" />
@@ -543,7 +543,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VersionInfoes">
+          <EntitySetMapping Name="VersionInfos">
             <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.VersionInfo">
               <MappingFragment StoreEntitySet="VersionInfo">
                 <ScalarProperty Name="ModifiedAt" ColumnName="ModifiedAt" />
