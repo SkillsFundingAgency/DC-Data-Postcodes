@@ -58,6 +58,9 @@
     <Compile Include="EFA_PostcodeDisadvantage.cs">
       <DependentUpon>Postcodes.tt</DependentUpon>
     </Compile>
+    <Compile Include="HMPP_Postcodes.cs">
+      <DependentUpon>Postcodes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IPostcodes.cs" />
     <Compile Include="MasterPostcode.cs">
       <DependentUpon>Postcodes.tt</DependentUpon>
@@ -85,6 +88,9 @@
       <DependentUpon>Postcodes.tt</DependentUpon>
     </Compile>
     <Compile Include="SFA_PostcodeDisadvantage.cs">
+      <DependentUpon>Postcodes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VersionInfo.cs">
       <DependentUpon>Postcodes.tt</DependentUpon>
     </Compile>
   </ItemGroup>

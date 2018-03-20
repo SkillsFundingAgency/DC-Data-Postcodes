@@ -18,6 +18,9 @@
         <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_ONS_Postcodes_Postcodes" />
         <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeAreaCost_Postcodes" />
         <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeDisadvantage_Postcodes" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.HMPP_Postcodes" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.VersionInfo" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_HMPP_Postcodes_Postcodes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

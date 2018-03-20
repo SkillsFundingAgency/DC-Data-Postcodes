@@ -84,4 +84,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Termination" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b8c49ede-1bf4-4039-9c51-a6624e8ea9b6" ChangeDateTime="03/20/2018 11:56:46">
+    <Property Name="ElementName" Value="[dbo].[MasterPostcodes].[Postcode]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MasterPostcodes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="VersionNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5d5b3967-52e1-45c2-a03f-48de36e2ec09" ChangeDateTime="03/20/2018 13:14:25">
+    <Property Name="ElementName" Value="[dbo].[VersionInfo].[VersionNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[VersionInfo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DataSource" />
+  </Operation>
 </Operations>

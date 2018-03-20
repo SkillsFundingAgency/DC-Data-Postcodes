@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace ESFA.DC.Data.Postcodes.Model.Interfaces
 {
@@ -16,5 +11,7 @@ namespace ESFA.DC.Data.Postcodes.Model.Interfaces
         DbSet<ONS_Postcodes> ONS_Postcodes { get; set; }
         DbSet<SFA_PostcodeAreaCost> SFA_PostcodeAreaCost { get; set; }
         DbSet<SFA_PostcodeDisadvantage> SFA_PostcodeDisadvantage { get; set; }
+        DbSet<HMPP_Postcodes> HMPP_Postcodes { get; set; }
+        DbSet<VersionInfo> VersionInfoes { get; set; }
     }
 }
