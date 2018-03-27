@@ -109,16 +109,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Postcodes.Context.tt">
+    <None Include="Postcodes.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Postcodes.Context.cs</LastGenOutput>
       <DependentUpon>Postcodes.edmx</DependentUpon>
-    </Content>
-    <Content Include="Postcodes.tt">
+    </None>
+    <None Include="Postcodes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Postcodes.edmx</DependentUpon>
       <LastGenOutput>Postcodes.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
