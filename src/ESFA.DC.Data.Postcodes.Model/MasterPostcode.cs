@@ -24,6 +24,7 @@ namespace ESFA.DC.Data.Postcodes.Model
             this.SFA_PostcodeAreaCost = new HashSet<SFA_PostcodeAreaCost>();
             this.SFA_PostcodeDisadvantage = new HashSet<SFA_PostcodeDisadvantage>();
             this.HMPP_Postcodes = new HashSet<HMPP_Postcodes>();
+            this.CareerLearningPilot_Postcode = new HashSet<CareerLearningPilot_Postcode>();
         }
     
         public string Postcode { get; set; }
@@ -42,5 +43,7 @@ namespace ESFA.DC.Data.Postcodes.Model
         public virtual ICollection<SFA_PostcodeDisadvantage> SFA_PostcodeDisadvantage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HMPP_Postcodes> HMPP_Postcodes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CareerLearningPilot_Postcode> CareerLearningPilot_Postcode { get; set; }
     }
 }
