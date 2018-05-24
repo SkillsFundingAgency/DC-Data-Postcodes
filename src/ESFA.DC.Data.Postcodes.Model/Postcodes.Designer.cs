@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Projects\Github\DC-Data-Postcodes\src\ESFA.DC.Data.Postcodes.Model\Postcodes.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Code\GIT\Postcodes\src\ESFA.DC.Data.Postcodes.Model\Postcodes.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

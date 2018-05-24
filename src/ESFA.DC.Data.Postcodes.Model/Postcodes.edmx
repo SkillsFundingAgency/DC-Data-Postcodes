@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ESFA.DC.Data.Postcodes.DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CareerLearningPilot_Postcode">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="AreaCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
         <EntityType Name="DAS_PostcodeDisadvantage">
           <Key>
             <PropertyRef Name="Postcode" />
@@ -98,6 +108,18 @@
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ModifiedAt" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CareerLearningPilot_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="CareerLearningPilot_Postcode" Type="Self.CareerLearningPilot_Postcode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="CareerLearningPilot_Postcode">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DAS_PostcodeDisadvantage_Postcodes">
           <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
           <End Role="DAS_PostcodeDisadvantage" Type="Self.DAS_PostcodeDisadvantage" Multiplicity="*" />
@@ -183,6 +205,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ESFADCDataPostcodesDatabaseModelStoreContainer">
+          <EntitySet Name="CareerLearningPilot_Postcode" EntityType="Self.CareerLearningPilot_Postcode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DAS_PostcodeDisadvantage" EntityType="Self.DAS_PostcodeDisadvantage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EFA_PostcodeAreaCost" EntityType="Self.EFA_PostcodeAreaCost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EFA_PostcodeDisadvantage" EntityType="Self.EFA_PostcodeDisadvantage" Schema="dbo" store:Type="Tables" />
@@ -192,6 +215,10 @@
           <EntitySet Name="SFA_PostcodeAreaCost" EntityType="Self.SFA_PostcodeAreaCost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SFA_PostcodeDisadvantage" EntityType="Self.SFA_PostcodeDisadvantage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CareerLearningPilot_Postcodes" Association="Self.FK_CareerLearningPilot_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="CareerLearningPilot_Postcode" EntitySet="CareerLearningPilot_Postcode" />
+          </AssociationSet>
           <AssociationSet Name="FK_DAS_PostcodeDisadvantage_Postcodes" Association="Self.FK_DAS_PostcodeDisadvantage_Postcodes">
             <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
             <End Role="DAS_PostcodeDisadvantage" EntitySet="DAS_PostcodeDisadvantage" />
@@ -263,6 +290,11 @@
             <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
             <End Role="HMPP_Postcodes" EntitySet="HMPP_Postcodes" />
           </AssociationSet>
+          <EntitySet Name="CareerLearningPilot_Postcode" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.CareerLearningPilot_Postcode" />
+          <AssociationSet Name="FK_CareerLearningPilot_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_CareerLearningPilot_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="CareerLearningPilot_Postcode" EntitySet="CareerLearningPilot_Postcode" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DAS_PostcodeDisadvantage">
           <Key>
@@ -309,6 +341,7 @@
           <NavigationProperty Name="SFA_PostcodeAreaCost" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeAreaCost_Postcodes" FromRole="MasterPostcode" ToRole="SFA_PostcodeAreaCost" />
           <NavigationProperty Name="SFA_PostcodeDisadvantage" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeDisadvantage_Postcodes" FromRole="MasterPostcode" ToRole="SFA_PostcodeDisadvantage" />
           <NavigationProperty Name="HMPP_Postcodes" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_HMPP_Postcodes_Postcodes" FromRole="MasterPostcode" ToRole="HMPP_Postcodes" />
+          <NavigationProperty Name="CareerLearningPilot_Postcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_CareerLearningPilot_Postcodes" FromRole="MasterPostcode" ToRole="CareerLearningPilot_Postcode" />
         </EntityType>
         <EntityType Name="ONS_Postcodes">
           <Key>
@@ -455,6 +488,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CareerLearningPilot_Postcode">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="AreaCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_CareerLearningPilot_Postcodes" FromRole="CareerLearningPilot_Postcode" ToRole="MasterPostcode" />
+        </EntityType>
+        <Association Name="FK_CareerLearningPilot_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.CareerLearningPilot_Postcode" Role="CareerLearningPilot_Postcode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="CareerLearningPilot_Postcode">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -551,6 +607,16 @@
                 <ScalarProperty Name="Comments" ColumnName="Comments" />
                 <ScalarProperty Name="VersionNumber" ColumnName="VersionNumber" />
                 <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CareerLearningPilot_Postcode">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.CareerLearningPilot_Postcode">
+              <MappingFragment StoreEntitySet="CareerLearningPilot_Postcode">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

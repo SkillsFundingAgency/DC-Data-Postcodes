@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CareerLearningPilot_Postcode.cs">
+      <DependentUpon>Postcodes.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAS_PostcodeDisadvantage.cs">
       <DependentUpon>Postcodes.tt</DependentUpon>
     </Compile>
