@@ -7,4 +7,12 @@
     <TargetConnectionString>Data Source=(local);Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="ULNROUserPwd">
+      <Value>NotUsedLocally!</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ULNRWUserPwd">
+      <Value>NotUsedLocally!!</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

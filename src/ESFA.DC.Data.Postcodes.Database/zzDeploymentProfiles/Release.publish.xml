@@ -7,4 +7,12 @@
     <TargetConnectionString>Data Source=__SQL_SERVER__;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="ULNROUserPwd">
+      <Value>__ULNRWUserPassword__</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ULNRWUserPwd">
+      <Value>__ULNRWUserPassword__</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>
