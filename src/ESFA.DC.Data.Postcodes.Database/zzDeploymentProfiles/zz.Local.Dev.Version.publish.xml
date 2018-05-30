@@ -8,11 +8,20 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="ULNROUserPwd">
+    <SqlCmdVariable Include="PostCodeROUserPwd">
       <Value>NotUsedLocally!</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="ULNRWUserPwd">
+    <SqlCmdVariable Include="PostCodeRWUserPwd">
       <Value>NotUsedLocally!!</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="DEPLOYMENT_DATETIME">
+      <Value>1900-01-01 00:00:00Z</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="BUILD_BUILDNUMBER">
+      <Value>X.Y.Z-LocalDev</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="BUILD_BRANCHNAME">
+      <Value>Local Machine</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>

@@ -8,11 +8,21 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="ULNROUserPwd">
-      <Value>__ULNRWUserPassword__</Value>
+    <SqlCmdVariable Include="PostCodeROUserPwd">
+      <Value>__PostCode_RO_User__</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="ULNRWUserPwd">
-      <Value>__ULNRWUserPassword__</Value>
+    <SqlCmdVariable Include="PostCodeRWUserPwd">
+      <Value>__PostCode_RW_User__</Value>
     </SqlCmdVariable>
+    <SqlCmdVariable Include="BUILD_BUILDNUMBER">
+      <Value>__BUILD_BUILDNUMBER__</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="DEPLOYMENT_DATETIME">
+      <Value>__RELEASE_DEPLOYMENT_STARTTIME__</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="BUILD_BRANCHNAME">
+      <Value>__BUILD_SOURCEBRANCHNAME__</Value>
+    </SqlCmdVariable>
+
   </ItemGroup>
 </Project>

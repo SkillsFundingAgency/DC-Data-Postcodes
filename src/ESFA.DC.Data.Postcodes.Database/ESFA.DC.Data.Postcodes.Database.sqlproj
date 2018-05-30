@@ -64,6 +64,9 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="zzDeploymentProfiles" />
     <Folder Include="Security" />
+    <Folder Include="Staging" />
+    <Folder Include="Staging\Tables" />
+    <Folder Include="Staging\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\MasterPostcodes.sql" />
@@ -78,6 +81,28 @@
     <Build Include="Security\RoleMemberships.sql" />
     <Build Include="Security\PostCode_RW_User.sql" />
     <Build Include="Security\PostCode_RO_User.sql" />
+    <Build Include="Staging\Tables\CareerLearningPilot_Postcode.sql" />
+    <Build Include="Staging\Tables\DAS_PostcodeDisadvantage.sql" />
+    <Build Include="Staging\Tables\EFA_PostcodeAreaCost.sql" />
+    <Build Include="Staging\Tables\EFA_PostcodeDisadvantage.sql" />
+    <Build Include="Staging\Tables\HMPP_Postcodes.sql" />
+    <Build Include="Staging\Tables\MasterPostcodes.sql" />
+    <Build Include="Staging\Tables\ONS_Postcodes.sql" />
+    <Build Include="Staging\Tables\SFA_PostcodeAreaCost.sql" />
+    <Build Include="Staging\Tables\SFA_PostcodeDisadvantage.sql" />
+    <Build Include="Staging\Tables\VersionInfo.sql" />
+    <Build Include="Security\Staging.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_MasterPostcodes.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_HMPP_Postcodes.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_CareerLearningPilot_Postcode.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_EFA_PostcodeAreaCost.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_DAS_PostcodeDisadvantage.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_EFA_PostcodeDisadvantage.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_SFA_PostcodeAreaCost.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_SFA_PostcodeDisadvantage.sql" />
+    <Build Include="Staging\Stored Procedures\usp_Process_ONS_Postcodes.sql" />
+    <Build Include="Staging\Stored Procedures\usp_RemovedProcessedRecords.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ESFA.DC.Data.Postcodes.Database.refactorlog" />
@@ -88,15 +113,30 @@
     <Build Include="dbo\Tables\CareerLearningPilot_Postcode.sql" />
   </ItemGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="ULNROUserPwd">
+    <SqlCmdVariable Include="BUILD_BUILDNUMBER">
+      <DefaultValue>0.0.0</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="BUILD_BRANCHNAME">
+      <DefaultValue>Local</DefaultValue>
+      <Value>$(SqlCmdVar__5)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="DEPLOYMENT_DATETIME">
+      <DefaultValue>1900-01-01 00:00:00Z</DefaultValue>
+      <Value>$(SqlCmdVar__4)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="PostCodeROUserPwd">
       <DefaultValue>
       </DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="ULNRWUserPwd">
+    <SqlCmdVariable Include="PostCodeRWUserPwd">
       <DefaultValue>
       </DefaultValue>
       <Value>$(SqlCmdVar__2)</Value>
     </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="zzz.Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>
