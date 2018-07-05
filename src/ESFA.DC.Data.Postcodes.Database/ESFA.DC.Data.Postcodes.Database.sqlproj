@@ -120,6 +120,11 @@
       <DefaultValue>Local</DefaultValue>
       <Value>$(SqlCmdVar__5)</Value>
     </SqlCmdVariable>
+    <SqlCmdVariable Include="RELEASE_RELEASENAME">
+      <DefaultValue>
+      </DefaultValue>
+      <Value>$(SqlCmdVar__6)</Value>
+    </SqlCmdVariable>
     <SqlCmdVariable Include="ROUserPassword">
       <DefaultValue>NotUseLocally</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
