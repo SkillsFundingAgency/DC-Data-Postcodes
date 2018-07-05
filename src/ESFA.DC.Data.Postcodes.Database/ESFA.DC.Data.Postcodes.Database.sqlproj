@@ -125,14 +125,12 @@
       <DefaultValue>1900-01-01 00:00:00Z</DefaultValue>
       <Value>$(SqlCmdVar__4)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="PostCodeROUserPwd">
-      <DefaultValue>
-      </DefaultValue>
+    <SqlCmdVariable Include="ROUserPassword">
+      <DefaultValue>NotUseLocally</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="PostCodeRWUserPwd">
-      <DefaultValue>
-      </DefaultValue>
+    <SqlCmdVariable Include="RWUserPassword">
+      <DefaultValue>NotUseLocally#</DefaultValue>
       <Value>$(SqlCmdVar__2)</Value>
     </SqlCmdVariable>
   </ItemGroup>

@@ -8,10 +8,10 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="PostCodeROUserPwd">
+    <SqlCmdVariable Include="ROUserPassword">
       <Value>NotUsedLocally!</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="PostCodeRWUserPwd">
+    <SqlCmdVariable Include="RWUserPassword">
       <Value>NotUsedLocally!!</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="DEPLOYMENT_DATETIME">
