@@ -121,10 +121,6 @@
       <DefaultValue>Local</DefaultValue>
       <Value>$(SqlCmdVar__5)</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="DEPLOYMENT_DATETIME">
-      <DefaultValue>1900-01-01 00:00:00Z</DefaultValue>
-      <Value>$(SqlCmdVar__4)</Value>
-    </SqlCmdVariable>
     <SqlCmdVariable Include="ROUserPassword">
       <DefaultValue>NotUseLocally</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
