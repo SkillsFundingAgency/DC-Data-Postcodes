@@ -108,7 +108,6 @@
     <RefactorLog Include="ESFA.DC.Data.Postcodes.Database.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="zzDeploymentProfiles\Release.publish.xml" />
     <None Include="zzDeploymentProfiles\zz.Local.Dev.Version.publish.xml" />
     <Build Include="dbo\Tables\CareerLearningPilot_Postcode.sql" />
   </ItemGroup>
