@@ -12,8 +12,8 @@
   DTS:ObjectName="Load PostCode Data"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{3ECEB4D7-3E23-402A-B48F-6A8B03319D80}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{E0005FF8-D636-4B0B-8730-694EB77D8CEF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,10 +23,10 @@
       DTS:DTSID="{4C3C9FD9-8E84-4B5C-AA37-739684753786}"
       DTS:ObjectName="Source Connection Manager">
       <DTS:PropertyExpression
-        DTS:Name="ConnectionString">@[$Package::SourceConnectionManagerConnectionString]</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">@[$Project::SourceConnectionManager_ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=(local);Initial Catalog=PostCodes-Ash;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=PostCodes;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -35,7 +35,7 @@
       DTS:DTSID="{047A3F64-A4B0-4AF8-87AF-8FA766B2F218}"
       DTS:ObjectName="Target Connection Manager">
       <DTS:PropertyExpression
-        DTS:Name="ConnectionString">@[$Package::TargetConnectionManagerConnectionString]</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">@[$Project::TargetConnectionManager_ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=(local);Initial Catalog=PostCodes;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
@@ -615,7 +615,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - DAS_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="8">
+              DTS:ThreadHint="1">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -1171,7 +1171,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - EFA_PostcodeAreaCost"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="0">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -1727,7 +1727,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - EFA_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="2">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -2273,7 +2273,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - HMPP_Postcodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="4">
+              DTS:ThreadHint="5">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -2735,7 +2735,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - MasterPostcodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="5">
+              DTS:ThreadHint="3">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -3451,7 +3451,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - ONS_Postcodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="4">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -4007,7 +4007,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - SFA_PostcodeAreaCost"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="6">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -4563,7 +4563,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - SFA_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="6">
+              DTS:ThreadHint="7">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -5152,7 +5152,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Delete from - VersionInfo"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="7">
+              DTS:ThreadHint="8">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
