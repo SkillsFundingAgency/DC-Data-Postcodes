@@ -13,6 +13,11 @@ Post-Deployment Script Template
 SET NOCOUNT ON ;
 GO
 
+RAISERROR('		  Clean Up not used objects',10,1) WITH NOWAIT;
+GO
+DROP TABLE IF EXISTS [Staging].[MasterPostcodes]
+RAISERROR('		  Drop TABLE [Staging].[MasterPostcodes] if exists as Not Used any more',10,1) WITH NOWAIT;
+
 GO
 RAISERROR('		   Extended Property',10,1) WITH NOWAIT;
 GO
