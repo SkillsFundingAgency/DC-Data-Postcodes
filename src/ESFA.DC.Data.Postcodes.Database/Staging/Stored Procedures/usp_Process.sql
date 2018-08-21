@@ -69,3 +69,7 @@ BEGIN
 -------------------------------------------------------------------------------------- 
 -- 
 END
+
+GO
+GRANT EXECUTE ON [Staging].[usp_Process] TO [PostCode_RW_User]
+GO

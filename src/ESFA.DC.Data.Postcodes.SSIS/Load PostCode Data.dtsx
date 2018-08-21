@@ -12,11 +12,27 @@
   DTS:ObjectName="Load PostCode Data"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{B9F8A98C-51DB-4D01-BFE4-8A0784D5B514}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{CA758759-145E-4E07-864C-2D24FB0D0273}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[App Log Connection String]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{74F0C0E1-B294-4D4F-B5D5-E413812FD49C}"
+      DTS:ObjectName="App Log Connection String">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::AppLogConnectionString_ConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Source Connection Manager - ONS]"
       DTS:CreationName="OLEDB"
@@ -71,6 +87,15 @@
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A87D5994-398A-446A-9173-20C91AD0F83A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RefDataName">
+      <DTS:VariableValue
+        DTS:DataType="8">PostCodes</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{E1E8EE21-1B2F-46A0-945F-476036EBABED}"
@@ -726,18 +751,18 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes\SQL - Delete from - CareerLearningPilot_PostCodes"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes\SQL - Clear data from - CareerLearningPilot_PostCodes"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{EAE1105A-DF65-4C8E-B753-38011F22981D}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - CareerLearningPilot_PostCodes"
+              DTS:ObjectName="SQL - Clear data from - CareerLearningPilot_PostCodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="5">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
@@ -750,7 +775,7 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{7d24ab4e-1d28-46dd-9480-9305f7ead254}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes\SQL - Delete from - CareerLearningPilot_PostCodes"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes\SQL - Clear data from - CareerLearningPilot_PostCodes"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes\DFT - CareerLearningPilot_PostCodes" />
@@ -1355,13 +1380,13 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost\SQL - Delete from - EFA_PostcodeAreaCost"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost\SQL - Clear data from - EFA_PostcodeAreaCost"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{D94152FF-E901-410D-82BB-8ABFD1BE72FD}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - EFA_PostcodeAreaCost"
+              DTS:ObjectName="SQL - Clear data from - EFA_PostcodeAreaCost"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
               DTS:ThreadHint="0">
               <DTS:Variables>
@@ -1369,22 +1394,22 @@
                   DTS:CreationName=""
                   DTS:DTSID="{845bf53f-5fc6-419b-9e12-fb05fd25591a}"
                   DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::TargetObjectName] + &quot;;&quot;"
+                  DTS:Expression="&quot;TRUNCATE TABLE &quot; + @[User::TargetObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
                   <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[EFA_PostcodeAreaCost];</DTS:VariableValue>
+                    DTS:DataType="8">TRUNCATE TABLE [Staging].[EFA_PostcodeAreaCost];</DTS:VariableValue>
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:PropertyExpression
                 DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[EFA_PostcodeAreaCost];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[EFA_PostcodeAreaCost];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -1393,7 +1418,7 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{7365fcef-68d5-4663-89f0-4d81dc6df7dd}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost\SQL - Delete from - EFA_PostcodeAreaCost"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost\SQL - Clear data from - EFA_PostcodeAreaCost"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost\DFT - EFA_PostcodeAreaCost" />
@@ -1998,36 +2023,36 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage\SQL - Delete from - EFA_PostcodeDisadvantage"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage\SQL - Clear data from - EFA_PostcodeDisadvantage"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{5402894B-1497-4429-9FC7-36F436A168E0}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - EFA_PostcodeDisadvantage"
+              DTS:ObjectName="SQL - Clear data from - EFA_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="7">
+              DTS:ThreadHint="3">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:DTSID="{e65e1214-03e4-4b9d-ae83-6ed7884733cd}"
                   DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::TargetObjectName] + &quot;;&quot;"
+                  DTS:Expression="&quot;TRUNCATE TABLE &quot; + @[User::TargetObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
                   <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[EFA_PostcodeDisadvantage];</DTS:VariableValue>
+                    DTS:DataType="8">TRUNCATE TABLE [Staging].[EFA_PostcodeDisadvantage];</DTS:VariableValue>
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:PropertyExpression
                 DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[EFA_PostcodeDisadvantage];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[EFA_PostcodeDisadvantage];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -2036,7 +2061,7 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{82fc9372-5fc6-403a-83ad-20155ad2a22a}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage\SQL - Delete from - EFA_PostcodeDisadvantage"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage\SQL - Clear data from - EFA_PostcodeDisadvantage"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage\DFT - EFA_PostcodeDisadvantage" />
@@ -2714,36 +2739,36 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\SQL - Delete from - HMPP_Postcodes"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\SQL - Clear data from - HMPP_Postcodes"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{DFD13EA5-F5BF-4FF3-A305-9B858F5FCA2C}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - HMPP_Postcodes"
+              DTS:ObjectName="SQL - Clear data from - HMPP_Postcodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="4">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:DTSID="{c41a72b8-2aaf-4eda-9ad7-6428883d6241}"
                   DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::TargetObjectName] + &quot;;&quot;"
+                  DTS:Expression="&quot;TRUNCATE TABLE &quot; + @[User::TargetObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
                   <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[HMPP_Postcodes];</DTS:VariableValue>
+                    DTS:DataType="8">TRUNCATE TABLE [Staging].[HMPP_Postcodes];</DTS:VariableValue>
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:PropertyExpression
                 DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[HMPP_Postcodes];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[HMPP_Postcodes];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -2752,7 +2777,7 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{bbf2109e-012e-432d-b3b9-489bf6c0e633}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\SQL - Delete from - HMPP_Postcodes"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\SQL - Clear data from - HMPP_Postcodes"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\DFT - HMPP_Postcodes" />
@@ -3703,36 +3728,36 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes\SQL - Delete from - ONS_Postcodes"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes\SQL - Clear data from - ONS_Postcodes"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{B09F3166-D23C-4A83-BF8F-E4B43F170D11}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - ONS_Postcodes"
+              DTS:ObjectName="SQL - Clear data from - ONS_Postcodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="6">
+              DTS:ThreadHint="5">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:DTSID="{c773d49b-cd5c-4c35-b06b-76435295b892}"
                   DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::TargetObjectName] + &quot;;&quot;"
+                  DTS:Expression="&quot;TRUNCATE TABLE &quot; + @[User::TargetObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
                   <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[ONS_Postcodes];</DTS:VariableValue>
+                    DTS:DataType="8">TRUNCATE TABLE [Staging].[ONS_Postcodes];</DTS:VariableValue>
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:PropertyExpression
                 DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[ONS_Postcodes];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[ONS_Postcodes];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -3741,7 +3766,7 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{a01f4591-e914-44fe-a0f6-228c44228c88}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes\SQL - Delete from - ONS_Postcodes"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes\SQL - Clear data from - ONS_Postcodes"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes\DFT - ONS_Postcodes" />
@@ -4346,36 +4371,36 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost\SQL - Delete from - SFA_PostcodeAreaCost"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost\SQL - Clear data from - SFA_PostcodeAreaCost"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{01CE5B1F-3853-4EDE-9C56-9E0B85365097}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - SFA_PostcodeAreaCost"
+              DTS:ObjectName="SQL - Clear data from - SFA_PostcodeAreaCost"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="6">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:DTSID="{8a50339d-ed3c-4fb4-87c7-3a4670716dcc}"
                   DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::TargetObjectName] + &quot;;&quot;"
+                  DTS:Expression="&quot;TRUNCATE TABLE &quot; + @[User::TargetObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
                   <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[SFA_PostcodeAreaCost];</DTS:VariableValue>
+                    DTS:DataType="8">TRUNCATE TABLE [Staging].[SFA_PostcodeAreaCost];</DTS:VariableValue>
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:PropertyExpression
                 DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[SFA_PostcodeAreaCost];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[SFA_PostcodeAreaCost];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -4384,7 +4409,7 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{b55d4898-85a6-448c-a211-664e43e8622a}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost\SQL - Delete from - SFA_PostcodeAreaCost"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost\SQL - Clear data from - SFA_PostcodeAreaCost"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost\DFT - SFA_PostcodeAreaCost" />
@@ -5013,36 +5038,36 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\SQL - Delete from - SFA_PostcodeDisadvantage"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\SQL - Clear data from - SFA_PostcodeDisadvantage"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{0E045BFD-FC40-4B7E-88DC-55ED0F833D56}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - SFA_PostcodeDisadvantage"
+              DTS:ObjectName="SQL - Clear data from - SFA_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="7">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:DTSID="{751ee067-d06d-4c4a-ba15-4ca356bc5d5b}"
                   DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::TargetObjectName] + &quot;;&quot;"
+                  DTS:Expression="&quot;TRUNCATE TABLE &quot; + @[User::TargetObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
                   <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[SFA_PostcodeDisadvantage];</DTS:VariableValue>
+                    DTS:DataType="8">TRUNCATE TABLE [Staging].[SFA_PostcodeDisadvantage];</DTS:VariableValue>
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:PropertyExpression
                 DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[SFA_PostcodeDisadvantage];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[SFA_PostcodeDisadvantage];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -5051,7 +5076,7 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{13303aac-642f-48e1-bacb-168e3df30fe4}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\SQL - Delete from - SFA_PostcodeDisadvantage"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\SQL - Clear data from - SFA_PostcodeDisadvantage"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\DFT - SFA_PostcodeDisadvantage" />
@@ -5502,36 +5527,36 @@
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
-              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo\SQL - Delete from - VersionInfo"
+              DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo\SQL - Clear data from - VersionInfo"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
               DTS:DTSID="{B4A83FB9-9F4E-4CDC-BB0A-72B03495A850}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
-              DTS:ObjectName="SQL - Delete from - VersionInfo"
+              DTS:ObjectName="SQL - Clear data from - VersionInfo"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="4">
+              DTS:ThreadHint="2">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
                   DTS:DTSID="{b6ab4ab4-f6e4-4965-9c9d-d6293d048afa}"
                   DTS:EvaluateAsExpression="True"
-                  DTS:Expression="&quot;DELETE FROM &quot; + @[User::TargetObjectName] + &quot;;&quot;"
+                  DTS:Expression="&quot;TRUNCATE TABLE &quot; + @[User::TargetObjectName] + &quot;;&quot;"
                   DTS:IncludeInDebugDump="2345"
                   DTS:Namespace="User"
                   DTS:ObjectName="SqlCommand">
                   <DTS:VariableValue
-                    DTS:DataType="8">DELETE FROM [Staging].[VersionInfo];</DTS:VariableValue>
+                    DTS:DataType="8">TRUNCATE TABLE [Staging].[VersionInfo];</DTS:VariableValue>
                 </DTS:Variable>
               </DTS:Variables>
               <DTS:PropertyExpression
-                DTS:Name="Name">LTRIM(RTRIM("SQL - Delete from - " + @[User::Name]))</DTS:PropertyExpression>
+                DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
               <DTS:PropertyExpression
                 DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{864B5FD0-219D-4865-903D-639F92A1039F}"
-                  SQLTask:SqlStatementSource="DELETE FROM [Staging].[VersionInfo];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="TRUNCATE TABLE [Staging].[VersionInfo];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -5540,11 +5565,169 @@
               DTS:refId="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo.PrecedenceConstraints[Constraint]"
               DTS:CreationName=""
               DTS:DTSID="{6b032454-584c-4841-a8d7-2c43fc2551b7}"
-              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo\SQL - Delete from - VersionInfo"
+              DTS:From="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo\SQL - Clear data from - VersionInfo"
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo\DFT - VersionInfo" />
           </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Process - Log Completed"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0752afc4-e095-4b14-b0de-8eb4cf2da973}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Process - Log Completed">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{fff0c96b-dd43-4036-823c-8783d3309c7c}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Action">
+          <DTS:VariableValue
+            DTS:DataType="8">Completed</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{e93be408-4c95-4ad0-acbf-6664e8f2a5b7}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Name">
+          <DTS:VariableValue
+            DTS:DataType="8">Log Start</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{37bce094-db16-4520-b5d5-9ff88c43b06d}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="&quot;INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; '&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [Message]&#xA;,'&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'&quot; + @[User::RefDataName]+ &quot;' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]&quot;&#xA;"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SqlCommand">
+          <DTS:VariableValue
+            DTS:DataType="8">INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])
+SELECT 
+ 'PostCodes Ref Data Refresh Completed' AS [Message]
+,'PostCodes Ref Data Refresh Completed' AS [MessageTemplate]
+,'Information' AS [Level]
+,GETUTCDATE() AS [TimeStampUTC]
+,NULL AS [Exception]
+,HOST_NAME() AS [MachineName]
+,'SSIS Loader' AS [ProcessName]
+,NULL AS [ThreadId]
+,'PostCodes' AS [CallerName]
+,NULL AS [SourceFile]
+,NULL AS [LineNumber]
+,NULL AS [JobId]
+,NULL AS [TaskKey]</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:PropertyExpression
+        DTS:Name="Name">"SEQ - Process - Log " + @[User::Action]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Process - Log Completed\SQL - Log Completed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{bec33941-e1c6-4455-a142-cb5dd02b2586}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Log Completed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Name">"SQL - Log " + @[User::Action]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{74F0C0E1-B294-4D4F-B5D5-E413812FD49C}"
+              SQLTask:SqlStatementSource="INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; 'PostCodes Ref Data Refresh Completed' AS [Message]&#xA;,'PostCodes Ref Data Refresh Completed' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'PostCodes' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ - Process - Log Started"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2767ab23-a016-4e42-bbab-615cae25b00e}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ - Process - Log Started">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{4EE48397-BA32-4CC6-8447-85945CF84CF3}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Action">
+          <DTS:VariableValue
+            DTS:DataType="8">Started</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{3fb1f8ee-2fe8-4a82-880c-594bb2caf301}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="Name">
+          <DTS:VariableValue
+            DTS:DataType="8">Log Start</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{2f002331-7f45-4075-acc0-10a02ff0be7c}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="&quot;INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; '&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [Message]&#xA;,'&quot; + @[User::RefDataName] + &quot; Ref Data Refresh &quot; + @[User::Action] + &quot;' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'&quot; + @[User::RefDataName]+ &quot;' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]&quot;&#xA;"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="SqlCommand">
+          <DTS:VariableValue
+            DTS:DataType="8">INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])
+SELECT 
+ 'PostCodes Ref Data Refresh Started' AS [Message]
+,'PostCodes Ref Data Refresh Started' AS [MessageTemplate]
+,'Information' AS [Level]
+,GETUTCDATE() AS [TimeStampUTC]
+,NULL AS [Exception]
+,HOST_NAME() AS [MachineName]
+,'SSIS Loader' AS [ProcessName]
+,NULL AS [ThreadId]
+,'PostCodes' AS [CallerName]
+,NULL AS [SourceFile]
+,NULL AS [LineNumber]
+,NULL AS [JobId]
+,NULL AS [TaskKey]</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:PropertyExpression
+        DTS:Name="Name">"SEQ - Process - Log " + @[User::Action]</DTS:PropertyExpression>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ - Process - Log Started\SQL - Log Started"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{294b2288-9d7c-4724-8061-44538dc4c994}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - Log Started"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="Name">"SQL - Log " + @[User::Action]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">@[User::SqlCommand]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{74F0C0E1-B294-4D4F-B5D5-E413812FD49C}"
+              SQLTask:SqlStatementSource="INSERT INTO [dbo].[Logs]([Message],[MessageTemplate],[Level],[TimeStampUTC],[Exception],[MachineName],[ProcessName],[ThreadId],[CallerName],[SourceFile],[LineNumber],[JobId],[TaskKey])&#xA;SELECT &#xA; 'PostCodes Ref Data Refresh Started' AS [Message]&#xA;,'PostCodes Ref Data Refresh Started' AS [MessageTemplate]&#xA;,'Information' AS [Level]&#xA;,GETUTCDATE() AS [TimeStampUTC]&#xA;,NULL AS [Exception]&#xA;,HOST_NAME() AS [MachineName]&#xA;,'SSIS Loader' AS [ProcessName]&#xA;,NULL AS [ThreadId]&#xA;,'PostCodes' AS [CallerName]&#xA;,NULL AS [SourceFile]&#xA;,NULL AS [LineNumber]&#xA;,NULL AS [JobId]&#xA;,NULL AS [TaskKey]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
     </DTS:Executable>
@@ -5559,13 +5742,13 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\SEQ - Process Data\SQL - Process ULNs"
+          DTS:refId="Package\SEQ - Process Data\SEQ - Process - Update from Staging"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Load New / Missing ULNs"
           DTS:DTSID="{B7D71983-2AE9-40DD-ABF7-910FFCDE798B}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="SQL - Process ULNs"
+          DTS:ObjectName="SEQ - Process - Update from Staging"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
@@ -5599,7 +5782,7 @@
           DTS:refId="Package\SEQ - Process Data.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{864E1168-CF9A-4174-8AA9-286BFAFDC699}"
-          DTS:From="Package\SEQ - Process Data\SQL - Process ULNs"
+          DTS:From="Package\SEQ - Process Data\SEQ - Process - Update from Staging"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\SEQ - Process Data\SQL - Remove Processed Records" />
@@ -5615,6 +5798,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\SEQ - Process Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{285F1DE6-07A6-44E6-89F8-B8C2A14E1C58}"
+      DTS:From="Package\SEQ - Process - Log Started"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SEQ - Load Data To Staging Area" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C78FEBD1-E442-4E45-B469-6DB351EE8817}"
+      DTS:From="Package\SEQ - Process Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SEQ - Process - Log Completed" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -5634,7 +5833,7 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes\SQL - Delete from - CareerLearningPilot_PostCodes"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes\SQL - Clear data from - CareerLearningPilot_PostCodes"
           TopLeft="5.5,8" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - CareerLearningPilot_PostCodes.PrecedenceConstraints[Constraint]"
@@ -5671,22 +5870,22 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost\SQL - Delete from - EFA_PostcodeAreaCost"
-          TopLeft="5.5,8" />
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost\SQL - Clear data from - EFA_PostcodeAreaCost"
+          TopLeft="6.5,7" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost.PrecedenceConstraints[Constraint]"
-          TopLeft="145.5,50">
+          TopLeft="146,49">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25"
+              EndConnector="0,26"
               Start="0,0"
-              End="0,17.5">
+              End="0,18.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.5" />
+                    End="0,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5698,8 +5897,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="309,140"
-          Size="309,183"
+          PanelSize="309,172"
+          Size="309,215"
           Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost"
           TopLeft="351,14" />
         <NodeLayout
@@ -5708,7 +5907,7 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage\SQL - Delete from - EFA_PostcodeDisadvantage"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage\SQL - Clear data from - EFA_PostcodeDisadvantage"
           TopLeft="5.5,8" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeDisadvantage.PrecedenceConstraints[Constraint]"
@@ -5745,7 +5944,7 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\SQL - Delete from - HMPP_Postcodes"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\SQL - Clear data from - HMPP_Postcodes"
           TopLeft="5.5,8" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes.PrecedenceConstraints[Constraint]"
@@ -5782,7 +5981,7 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes\SQL - Delete from - ONS_Postcodes"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes\SQL - Clear data from - ONS_Postcodes"
           TopLeft="5.5,8" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - ONS_Postcodes.PrecedenceConstraints[Constraint]"
@@ -5819,7 +6018,7 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost\SQL - Delete from - SFA_PostcodeAreaCost"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost\SQL - Clear data from - SFA_PostcodeAreaCost"
           TopLeft="5.5,8" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost.PrecedenceConstraints[Constraint]"
@@ -5856,7 +6055,7 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\SQL - Delete from - SFA_PostcodeDisadvantage"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\SQL - Clear data from - SFA_PostcodeDisadvantage"
           TopLeft="5.5,8" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage.PrecedenceConstraints[Constraint]"
@@ -5893,7 +6092,7 @@
           TopLeft="5.5,75" />
         <NodeLayout
           Size="280,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo\SQL - Delete from - VersionInfo"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo\SQL - Clear data from - VersionInfo"
           TopLeft="5.5,8" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - VersionInfo.PrecedenceConstraints[Constraint]"
@@ -5927,13 +6126,35 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1360,438"
-          Size="1360,480"
+          PanelSize="1360,472"
+          Size="1360,515"
           Id="Package\SEQ - Load Data To Staging Area"
-          TopLeft="28.5833333333335,127.321428571429" />
+          TopLeft="160.5,249.5" />
         <NodeLayout
-          Size="283,42"
-          Id="Package\SEQ - Process Data\SQL - Process ULNs"
+          Size="240,42"
+          Id="Package\SEQ - Process - Log Completed\SQL - Log Completed"
+          TopLeft="20.5,12.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="283,69"
+          Size="283,112"
+          Id="Package\SEQ - Process - Log Completed"
+          TopLeft="705,1056" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\SEQ - Process - Log Started\SQL - Log Started"
+          TopLeft="20.5,12.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="283,69"
+          Size="283,112"
+          Id="Package\SEQ - Process - Log Started"
+          TopLeft="694,90.5" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\SEQ - Process Data\SEQ - Process - Update from Staging"
           TopLeft="17,10" />
         <NodeLayout
           Size="283,42"
@@ -5941,18 +6162,30 @@
           TopLeft="17,80" />
         <EdgeLayout
           Id="Package\SEQ - Process Data.PrecedenceConstraints[Constraint]"
-          TopLeft="158.5,52">
+          TopLeft="102,52">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28"
+              EndConnector="56.5,28"
               Start="0,0"
-              End="0,20.5">
+              End="56.5,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5" />
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="4,14" />
+                  <mssgle:LineSegment
+                    End="52.5,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.5,14"
+                    Point2="56.5,14"
+                    Point3="56.5,18" />
+                  <mssgle:LineSegment
+                    End="56.5,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5964,24 +6197,68 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="308,136"
-          Size="308,179"
+          PanelSize="308,177"
+          Size="308,220"
           Id="Package\SEQ - Process Data"
-          TopLeft="1435,276.25" />
+          TopLeft="686.5,789.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="1388.58333333333,366.535714285714">
+          TopLeft="840.5,764.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="46.4166666666665,0"
+              EndConnector="0,25"
               Start="0,0"
-              End="38.9166666666665,0">
+              End="0,17.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="38.9166666666665,0" />
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="838,202.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="843.5,1009.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5"
+              Start="0,0"
+              End="0,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6345,7 +6622,7 @@
     design-time-name="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\DFT - HMPP_Postcodes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="136,42"
           Id="Package\SEQ - Load Data To Staging Area\SEQ - HMPP_Postcodes\DFT - HMPP_Postcodes\Source Data"
@@ -6381,9 +6658,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6405,9 +6680,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6429,9 +6702,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
