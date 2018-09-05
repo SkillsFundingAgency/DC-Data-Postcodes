@@ -12,8 +12,8 @@
   DTS:ObjectName="Load PostCode Data"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="73"
-  DTS:VersionGUID="{B7087BF6-0609-4A88-BB01-F2F2CA922907}">
+  DTS:VersionBuild="74"
+  DTS:VersionGUID="{7E024C89-797D-4DC5-AB51-4E5C2F9C3A0D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,12 +25,7 @@
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[$Project::AppLogConnectionString_ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"></DTS:Password>
-        </DTS:ConnectionManager>
+        <DTS:ConnectionManager />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -41,8 +36,7 @@
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[$Project::SourceConnectionManagerONS_ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="" />
+        <DTS:ConnectionManager />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -53,8 +47,7 @@
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[$Project::SourceConnectionManagerOrganisation_ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DSCI-PRD-SQL-98;Initial Catalog=Organisation;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+        <DTS:ConnectionManager />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -65,8 +58,7 @@
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[$Project::SourceConnectionManagerPostcodeFactors_ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="" />
+        <DTS:ConnectionManager />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -77,12 +69,7 @@
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[$Project::TargetConnectionManager_ConnectionString]</DTS:PropertyExpression>
       <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"></DTS:Password>
-        </DTS:ConnectionManager>
+        <DTS:ConnectionManager />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -759,7 +746,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - CareerLearningPilot_PostCodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:PropertyExpression
                 DTS:Name="Name">LTRIM(RTRIM("SQL - Clear data from - " + @[User::Name]))</DTS:PropertyExpression>
@@ -1393,7 +1380,7 @@ WHERE [Apprenticeship_Uplift] IS NOT NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - DAS_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -2036,7 +2023,7 @@ WHERE [Apprenticeship_Uplift] IS NOT NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - EFA_PostcodeAreaCost"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="2">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -2679,7 +2666,7 @@ WHERE [Apprenticeship_Uplift] IS NOT NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - EFA_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="4">
+              DTS:ThreadHint="8">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -3395,7 +3382,7 @@ WHERE [Apprenticeship_Uplift] IS NOT NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - HMPP_Postcodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="7">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -4384,7 +4371,7 @@ WHERE [Apprenticeship_Uplift] IS NOT NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - ONS_Postcodes"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="7">
+              DTS:ThreadHint="3">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -5027,7 +5014,7 @@ WHERE [Apprenticeship_Uplift] IS NOT NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - SFA_PostcodeAreaCost"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="5">
+              DTS:ThreadHint="4">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -5349,7 +5336,7 @@ WHERE [Apprenticeship_Uplift] IS NOT NULL</property>
       ,[EffectiveFrom]
       ,[EffectiveTo]
 FROM [dbo].[SFA_PostcodeDisadvantage]
-WHERE [Apprenticeship_Uplift] IS NULL</property>
+WHERE [Uplift] IS NOT NULL</property>
                         <property
                           dataType="System.String"
                           description="The variable that contains the SQL command to be executed."
@@ -5675,7 +5662,7 @@ WHERE [Apprenticeship_Uplift] IS NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - SFA_PostcodeDisadvantage"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="6">
+              DTS:ThreadHint="5">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -6164,7 +6151,7 @@ WHERE [Apprenticeship_Uplift] IS NULL</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL - Clear data from - VersionInfo"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="8">
+              DTS:ThreadHint="6">
               <DTS:Variables>
                 <DTS:Variable
                   DTS:CreationName=""
@@ -6563,7 +6550,7 @@ SELECT
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="309,137"
+          PanelSize="309,144"
           Size="309,187"
           Id="Package\SEQ - Load Data To Staging Area\SEQ - EFA_PostcodeAreaCost"
           TopLeft="353.75,14" />
@@ -6711,7 +6698,7 @@ SELECT
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="309,140"
+          PanelSize="309,144"
           Size="309,187"
           Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeAreaCost"
           TopLeft="353.75,214" />
@@ -7742,13 +7729,13 @@ SELECT
           Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\DFT - SFA_PostcodeDisadvantage\Derived Column"
           TopLeft="342.833333333333,155" />
         <NodeLayout
-          Size="135,42"
-          Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\DFT - SFA_PostcodeDisadvantage\Target Data"
-          TopLeft="351.333333333333,317" />
-        <NodeLayout
           Size="156,42"
           Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\DFT - SFA_PostcodeDisadvantage\Data Conversion"
           TopLeft="341,239" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\DFT - SFA_PostcodeDisadvantage\Target Data"
+          TopLeft="351.333333333333,317" />
         <EdgeLayout
           Id="Package\SEQ - Load Data To Staging Area\SEQ - SFA_PostcodeDisadvantage\DFT - SFA_PostcodeDisadvantage.Paths[OLE DB Source Output]"
           TopLeft="419.833333333333,117">
