@@ -5,13 +5,13 @@ BEGIN
 
 	BEGIN TRY
 		
-		MERGE INTO [dbo].[EFA_PostcodeAreaCost] AS Target
+		MERGE INTO [dbo].[SFA_PostcodeAreaCost] AS Target
 		USING (
 				SELECT  [Postcode] , 
 						[AreaCostFactor], 
 						[EffectiveFrom], 
 						[EffectiveTo]
-				  FROM [Staging].[EFA_PostcodeAreaCost]
+				  FROM [Staging].[SFA_PostcodeAreaCost]
 			  )
 			  AS Source 
 		    ON Target.[Postcode] = Source.[Postcode]
@@ -79,3 +79,5 @@ BEGIN
 -------------------------------------------------------------------------------------- 
 -- 
 END
+
+GO

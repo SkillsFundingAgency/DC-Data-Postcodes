@@ -5,16 +5,33 @@ BEGIN
 
 	BEGIN TRY
 				
+
+			RAISERROR('MasterPostcode',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_MasterPostcodes];
+
+			RAISERROR('HMPP',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_HMPP_Postcodes];
+
+			RAISERROR('CareerLearning',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_CareerLearningPilot_Postcode];
+
+			RAISERROR('DAS',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_DAS_PostcodeDisadvantage];
+
+			RAISERROR('EFA_PostcodeAreaCost',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_EFA_PostcodeAreaCost];
+
+			RAISERROR('EFA_PostcodeDisadvantage',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_EFA_PostcodeDisadvantage];
 
+			
+			RAISERROR('ONS',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_ONS_Postcodes];
 
+			RAISERROR('SFA_PostcodeAreaCost',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_SFA_PostcodeAreaCost];
+
+			RAISERROR('SFA_PostcodeDisadvantage',10,1) WITH NOWAIT;
 			EXEC [Staging].[usp_Process_SFA_PostcodeDisadvantage];
 
 		RETURN 0;
@@ -52,3 +69,7 @@ BEGIN
 -------------------------------------------------------------------------------------- 
 -- 
 END
+
+GO
+GRANT EXECUTE ON [Staging].[usp_Process] TO [PostCode_RW_User]
+GO
