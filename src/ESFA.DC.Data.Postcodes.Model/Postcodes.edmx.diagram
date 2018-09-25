@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9742a8751c094dee83e3ae3271abcacb" Name="Diagram1">
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.CareerLearningPilot_Postcode" Width="1.5" PointX="3" PointY="22.125" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.DAS_PostcodeDisadvantage" Width="1.5" PointX="3" PointY="13.5" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeAreaCost" Width="1.5" PointX="3" PointY="16.25" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeDisadvantage" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.HMPP_Postcodes" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.ONS_Postcodes" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeAreaCost" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeDisadvantage" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.VersionInfo" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_CareerLearningPilot_Postcodes" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_DAS_PostcodeDisadvantage_Postcodes" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeAreaCost_Postcodes" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeDisadvantage_Postcodes" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_HMPP_Postcodes_Postcodes" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_ONS_Postcodes_Postcodes" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeAreaCost_Postcodes" />
+        <AssociationConnector Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeDisadvantage_Postcodes" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

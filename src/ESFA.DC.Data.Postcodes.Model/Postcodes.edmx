@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ESFA.DC.Data.Postcodes.DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CareerLearningPilot_Postcode">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="AreaCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="DAS_PostcodeDisadvantage">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Uplift" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="EFA_PostcodeAreaCost">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="AreaCostFactor" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="EFA_PostcodeDisadvantage">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Uplift" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="HMPP_Postcodes">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="UKPRN" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="UKPRN" Type="bigint" Nullable="false" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="MasterPostcodes">
+          <Key>
+            <PropertyRef Name="Postcode" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ONS_Postcodes">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Introduction" Type="nvarchar" MaxLength="6" />
+          <Property Name="Termination" Type="nvarchar" MaxLength="6" />
+          <Property Name="LocalAuthority" Type="nvarchar" MaxLength="9" />
+          <Property Name="Lep1" Type="nvarchar" MaxLength="9" />
+          <Property Name="Lep2" Type="nvarchar" MaxLength="9" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+          <Property Name="Nuts" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SFA_PostcodeAreaCost">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="AreaCostFactor" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="SFA_PostcodeDisadvantage">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Uplift" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="EffectiveFrom" Type="date" Nullable="false" />
+          <Property Name="EffectiveTo" Type="date" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="DataSource" />
+            <PropertyRef Name="VersionNumber" />
+          </Key>
+          <Property Name="DataSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VersionNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CareerLearningPilot_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="CareerLearningPilot_Postcode" Type="Self.CareerLearningPilot_Postcode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="CareerLearningPilot_Postcode">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DAS_PostcodeDisadvantage_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="DAS_PostcodeDisadvantage" Type="Self.DAS_PostcodeDisadvantage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="DAS_PostcodeDisadvantage">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EFA_PostcodeAreaCost_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="EFA_PostcodeAreaCost" Type="Self.EFA_PostcodeAreaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="EFA_PostcodeAreaCost">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EFA_PostcodeDisadvantage_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="EFA_PostcodeDisadvantage" Type="Self.EFA_PostcodeDisadvantage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="EFA_PostcodeDisadvantage">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HMPP_Postcodes_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="HMPP_Postcodes" Type="Self.HMPP_Postcodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="HMPP_Postcodes">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ONS_Postcodes_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="ONS_Postcodes" Type="Self.ONS_Postcodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="ONS_Postcodes">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SFA_PostcodeAreaCost_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="SFA_PostcodeAreaCost" Type="Self.SFA_PostcodeAreaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="SFA_PostcodeAreaCost">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SFA_PostcodeDisadvantage_Postcodes">
+          <End Role="MasterPostcodes" Type="Self.MasterPostcodes" Multiplicity="1" />
+          <End Role="SFA_PostcodeDisadvantage" Type="Self.SFA_PostcodeDisadvantage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcodes">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="SFA_PostcodeDisadvantage">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ESFADCDataPostcodesDatabaseModelStoreContainer">
+          <EntitySet Name="CareerLearningPilot_Postcode" EntityType="Self.CareerLearningPilot_Postcode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DAS_PostcodeDisadvantage" EntityType="Self.DAS_PostcodeDisadvantage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EFA_PostcodeAreaCost" EntityType="Self.EFA_PostcodeAreaCost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EFA_PostcodeDisadvantage" EntityType="Self.EFA_PostcodeDisadvantage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HMPP_Postcodes" EntityType="Self.HMPP_Postcodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterPostcodes" EntityType="Self.MasterPostcodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ONS_Postcodes" EntityType="Self.ONS_Postcodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SFA_PostcodeAreaCost" EntityType="Self.SFA_PostcodeAreaCost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SFA_PostcodeDisadvantage" EntityType="Self.SFA_PostcodeDisadvantage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CareerLearningPilot_Postcodes" Association="Self.FK_CareerLearningPilot_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="CareerLearningPilot_Postcode" EntitySet="CareerLearningPilot_Postcode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DAS_PostcodeDisadvantage_Postcodes" Association="Self.FK_DAS_PostcodeDisadvantage_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="DAS_PostcodeDisadvantage" EntitySet="DAS_PostcodeDisadvantage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EFA_PostcodeAreaCost_Postcodes" Association="Self.FK_EFA_PostcodeAreaCost_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="EFA_PostcodeAreaCost" EntitySet="EFA_PostcodeAreaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EFA_PostcodeDisadvantage_Postcodes" Association="Self.FK_EFA_PostcodeDisadvantage_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="EFA_PostcodeDisadvantage" EntitySet="EFA_PostcodeDisadvantage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HMPP_Postcodes_Postcodes" Association="Self.FK_HMPP_Postcodes_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="HMPP_Postcodes" EntitySet="HMPP_Postcodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ONS_Postcodes_Postcodes" Association="Self.FK_ONS_Postcodes_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="ONS_Postcodes" EntitySet="ONS_Postcodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SFA_PostcodeAreaCost_Postcodes" Association="Self.FK_SFA_PostcodeAreaCost_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="SFA_PostcodeAreaCost" EntitySet="SFA_PostcodeAreaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SFA_PostcodeDisadvantage_Postcodes" Association="Self.FK_SFA_PostcodeDisadvantage_Postcodes">
+            <End Role="MasterPostcodes" EntitySet="MasterPostcodes" />
+            <End Role="SFA_PostcodeDisadvantage" EntitySet="SFA_PostcodeDisadvantage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ESFA.DC.Data.Postcodes.DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Postcodes" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DAS_PostcodeDisadvantage" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.DAS_PostcodeDisadvantage" />
+          <EntitySet Name="EFA_PostcodeAreaCost" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeAreaCost" />
+          <EntitySet Name="EFA_PostcodeDisadvantage" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeDisadvantage" />
+          <EntitySet Name="MasterPostcodes" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" />
+          <EntitySet Name="ONS_Postcodes" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.ONS_Postcodes" />
+          <EntitySet Name="SFA_PostcodeAreaCost" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeAreaCost" />
+          <EntitySet Name="SFA_PostcodeDisadvantage" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeDisadvantage" />
+          <AssociationSet Name="FK_DAS_PostcodeDisadvantage_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_DAS_PostcodeDisadvantage_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="DAS_PostcodeDisadvantage" EntitySet="DAS_PostcodeDisadvantage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EFA_PostcodeAreaCost_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeAreaCost_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="EFA_PostcodeAreaCost" EntitySet="EFA_PostcodeAreaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EFA_PostcodeDisadvantage_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeDisadvantage_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="EFA_PostcodeDisadvantage" EntitySet="EFA_PostcodeDisadvantage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ONS_Postcodes_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_ONS_Postcodes_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="ONS_Postcodes" EntitySet="ONS_Postcodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SFA_PostcodeAreaCost_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeAreaCost_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="SFA_PostcodeAreaCost" EntitySet="SFA_PostcodeAreaCost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SFA_PostcodeDisadvantage_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeDisadvantage_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="SFA_PostcodeDisadvantage" EntitySet="SFA_PostcodeDisadvantage" />
+          </AssociationSet>
+          <EntitySet Name="HMPP_Postcodes" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.HMPP_Postcodes" />
+          <EntitySet Name="VersionInfos" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.VersionInfo" />
+          <AssociationSet Name="FK_HMPP_Postcodes_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_HMPP_Postcodes_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="HMPP_Postcodes" EntitySet="HMPP_Postcodes" />
+          </AssociationSet>
+          <EntitySet Name="CareerLearningPilot_Postcode" EntityType="ESFA.DC.Data.Postcodes.DatabaseModel.CareerLearningPilot_Postcode" />
+          <AssociationSet Name="FK_CareerLearningPilot_Postcodes" Association="ESFA.DC.Data.Postcodes.DatabaseModel.FK_CareerLearningPilot_Postcodes">
+            <End Role="MasterPostcode" EntitySet="MasterPostcodes" />
+            <End Role="CareerLearningPilot_Postcode" EntitySet="CareerLearningPilot_Postcode" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DAS_PostcodeDisadvantage">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Uplift" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_DAS_PostcodeDisadvantage_Postcodes" FromRole="DAS_PostcodeDisadvantage" ToRole="MasterPostcode" />
+        </EntityType>
+        <EntityType Name="EFA_PostcodeAreaCost">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="AreaCostFactor" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeAreaCost_Postcodes" FromRole="EFA_PostcodeAreaCost" ToRole="MasterPostcode" />
+        </EntityType>
+        <EntityType Name="EFA_PostcodeDisadvantage">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Uplift" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeDisadvantage_Postcodes" FromRole="EFA_PostcodeDisadvantage" ToRole="MasterPostcode" />
+        </EntityType>
+        <EntityType Name="MasterPostcode">
+          <Key>
+            <PropertyRef Name="Postcode" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DAS_PostcodeDisadvantage" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_DAS_PostcodeDisadvantage_Postcodes" FromRole="MasterPostcode" ToRole="DAS_PostcodeDisadvantage" />
+          <NavigationProperty Name="EFA_PostcodeAreaCost" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeAreaCost_Postcodes" FromRole="MasterPostcode" ToRole="EFA_PostcodeAreaCost" />
+          <NavigationProperty Name="EFA_PostcodeDisadvantage" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_EFA_PostcodeDisadvantage_Postcodes" FromRole="MasterPostcode" ToRole="EFA_PostcodeDisadvantage" />
+          <NavigationProperty Name="ONS_Postcodes" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_ONS_Postcodes_Postcodes" FromRole="MasterPostcode" ToRole="ONS_Postcodes" />
+          <NavigationProperty Name="SFA_PostcodeAreaCost" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeAreaCost_Postcodes" FromRole="MasterPostcode" ToRole="SFA_PostcodeAreaCost" />
+          <NavigationProperty Name="SFA_PostcodeDisadvantage" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeDisadvantage_Postcodes" FromRole="MasterPostcode" ToRole="SFA_PostcodeDisadvantage" />
+          <NavigationProperty Name="HMPP_Postcodes" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_HMPP_Postcodes_Postcodes" FromRole="MasterPostcode" ToRole="HMPP_Postcodes" />
+          <NavigationProperty Name="CareerLearningPilot_Postcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_CareerLearningPilot_Postcodes" FromRole="MasterPostcode" ToRole="CareerLearningPilot_Postcode" />
+        </EntityType>
+        <EntityType Name="ONS_Postcodes">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Introduction" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Termination" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="LocalAuthority" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Lep1" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Lep2" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <Property Name="Nuts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_ONS_Postcodes_Postcodes" FromRole="ONS_Postcodes" ToRole="MasterPostcode" />
+        </EntityType>
+        <EntityType Name="SFA_PostcodeAreaCost">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="AreaCostFactor" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeAreaCost_Postcodes" FromRole="SFA_PostcodeAreaCost" ToRole="MasterPostcode" />
+        </EntityType>
+        <EntityType Name="SFA_PostcodeDisadvantage">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Uplift" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_SFA_PostcodeDisadvantage_Postcodes" FromRole="SFA_PostcodeDisadvantage" ToRole="MasterPostcode" />
+        </EntityType>
+        <Association Name="FK_DAS_PostcodeDisadvantage_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.DAS_PostcodeDisadvantage" Role="DAS_PostcodeDisadvantage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="DAS_PostcodeDisadvantage">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EFA_PostcodeAreaCost_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeAreaCost" Role="EFA_PostcodeAreaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="EFA_PostcodeAreaCost">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EFA_PostcodeDisadvantage_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeDisadvantage" Role="EFA_PostcodeDisadvantage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="EFA_PostcodeDisadvantage">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ONS_Postcodes_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.ONS_Postcodes" Role="ONS_Postcodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="ONS_Postcodes">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SFA_PostcodeAreaCost_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeAreaCost" Role="SFA_PostcodeAreaCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="SFA_PostcodeAreaCost">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SFA_PostcodeDisadvantage_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeDisadvantage" Role="SFA_PostcodeDisadvantage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="SFA_PostcodeDisadvantage">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HMPP_Postcodes">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="UKPRN" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="UKPRN" Type="Int64" Nullable="false" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_HMPP_Postcodes_Postcodes" FromRole="HMPP_Postcodes" ToRole="MasterPostcode" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="DataSource" />
+            <PropertyRef Name="VersionNumber" />
+          </Key>
+          <Property Name="DataSource" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VersionNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedAt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_HMPP_Postcodes_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.HMPP_Postcodes" Role="HMPP_Postcodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="HMPP_Postcodes">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CareerLearningPilot_Postcode">
+          <Key>
+            <PropertyRef Name="Postcode" />
+            <PropertyRef Name="EffectiveFrom" />
+          </Key>
+          <Property Name="Postcode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="AreaCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EffectiveFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EffectiveTo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MasterPostcode" Relationship="ESFA.DC.Data.Postcodes.DatabaseModel.FK_CareerLearningPilot_Postcodes" FromRole="CareerLearningPilot_Postcode" ToRole="MasterPostcode" />
+        </EntityType>
+        <Association Name="FK_CareerLearningPilot_Postcodes">
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode" Role="MasterPostcode" Multiplicity="1" />
+          <End Type="ESFA.DC.Data.Postcodes.DatabaseModel.CareerLearningPilot_Postcode" Role="CareerLearningPilot_Postcode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPostcode">
+              <PropertyRef Name="Postcode" />
+            </Principal>
+            <Dependent Role="CareerLearningPilot_Postcode">
+              <PropertyRef Name="Postcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ESFADCDataPostcodesDatabaseModelStoreContainer" CdmEntityContainer="Postcodes">
+          <EntitySetMapping Name="DAS_PostcodeDisadvantage">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.DAS_PostcodeDisadvantage">
+              <MappingFragment StoreEntitySet="DAS_PostcodeDisadvantage">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="Uplift" ColumnName="Uplift" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EFA_PostcodeAreaCost">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeAreaCost">
+              <MappingFragment StoreEntitySet="EFA_PostcodeAreaCost">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="AreaCostFactor" ColumnName="AreaCostFactor" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EFA_PostcodeDisadvantage">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.EFA_PostcodeDisadvantage">
+              <MappingFragment StoreEntitySet="EFA_PostcodeDisadvantage">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="Uplift" ColumnName="Uplift" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterPostcodes">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.MasterPostcode">
+              <MappingFragment StoreEntitySet="MasterPostcodes">
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ONS_Postcodes">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.ONS_Postcodes">
+              <MappingFragment StoreEntitySet="ONS_Postcodes">
+                <ScalarProperty Name="Nuts" ColumnName="Nuts" />
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="Lep2" ColumnName="Lep2" />
+                <ScalarProperty Name="Lep1" ColumnName="Lep1" />
+                <ScalarProperty Name="LocalAuthority" ColumnName="LocalAuthority" />
+                <ScalarProperty Name="Termination" ColumnName="Termination" />
+                <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SFA_PostcodeAreaCost">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeAreaCost">
+              <MappingFragment StoreEntitySet="SFA_PostcodeAreaCost">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="AreaCostFactor" ColumnName="AreaCostFactor" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SFA_PostcodeDisadvantage">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.SFA_PostcodeDisadvantage">
+              <MappingFragment StoreEntitySet="SFA_PostcodeDisadvantage">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="Uplift" ColumnName="Uplift" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HMPP_Postcodes">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.HMPP_Postcodes">
+              <MappingFragment StoreEntitySet="HMPP_Postcodes">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="UKPRN" ColumnName="UKPRN" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionInfos">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.VersionInfo">
+              <MappingFragment StoreEntitySet="VersionInfo">
+                <ScalarProperty Name="ModifiedAt" ColumnName="ModifiedAt" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="VersionNumber" ColumnName="VersionNumber" />
+                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CareerLearningPilot_Postcode">
+            <EntityTypeMapping TypeName="ESFA.DC.Data.Postcodes.DatabaseModel.CareerLearningPilot_Postcode">
+              <MappingFragment StoreEntitySet="CareerLearningPilot_Postcode">
+                <ScalarProperty Name="EffectiveTo" ColumnName="EffectiveTo" />
+                <ScalarProperty Name="EffectiveFrom" ColumnName="EffectiveFrom" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

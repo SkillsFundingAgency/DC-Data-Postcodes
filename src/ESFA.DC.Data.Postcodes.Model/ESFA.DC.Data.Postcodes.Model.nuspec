@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ESFA.DC.Data.Postcodes.Model</id>
+    <version>0.1.0</version>
+    <authors>DC</authors>
+    <owners>ESFA</owners>
+    <licenseUrl>https://github.com/SkillsFundingAgency/DC-Data-Postcodes/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SkillsFundingAgency/DC-Data-Postcodes</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Postcodes Entity Framework Model Project.</description>
+    <copyright>Copyright 2018</copyright>
+    <tags>ILR Postcodes Data Database Model</tags>
+  </metadata>
+</package>
