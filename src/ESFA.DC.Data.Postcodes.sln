@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ESFA.DC.Data.Postcodes.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESFA.DC.Data.Postcodes.Model", "ESFA.DC.Data.Postcodes.Model\ESFA.DC.Data.Postcodes.Model.csproj", "{B9096F21-CFF8-44F0-9543-BFE9E3318E7F}"
 EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ESFA.DC.Data.Postcodes.SSIS", "ESFA.DC.Data.Postcodes.SSIS\ESFA.DC.Data.Postcodes.SSIS.dtproj", "{579209BF-3369-468B-9234-A3E2A1A364E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{B9096F21-CFF8-44F0-9543-BFE9E3318E7F}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{B9096F21-CFF8-44F0-9543-BFE9E3318E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9096F21-CFF8-44F0-9543-BFE9E3318E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{579209BF-3369-468B-9234-A3E2A1A364E7}.Debug|Any CPU.ActiveCfg = Development
+		{579209BF-3369-468B-9234-A3E2A1A364E7}.Debug|Any CPU.Build.0 = Development
+		{579209BF-3369-468B-9234-A3E2A1A364E7}.Development|Any CPU.ActiveCfg = Development
+		{579209BF-3369-468B-9234-A3E2A1A364E7}.Development|Any CPU.Build.0 = Development
+		{579209BF-3369-468B-9234-A3E2A1A364E7}.Release|Any CPU.ActiveCfg = Development
+		{579209BF-3369-468B-9234-A3E2A1A364E7}.Release|Any CPU.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
