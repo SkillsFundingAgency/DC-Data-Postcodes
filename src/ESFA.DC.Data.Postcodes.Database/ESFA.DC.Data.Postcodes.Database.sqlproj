@@ -67,6 +67,7 @@
     <Folder Include="Staging" />
     <Folder Include="Staging\Tables" />
     <Folder Include="Staging\Stored Procedures" />
+    <Folder Include="dbo\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\MasterPostcodes.sql" />
@@ -103,6 +104,10 @@
     <Build Include="Staging\Stored Procedures\usp_Process_SFA_PostcodeDisadvantage.sql" />
     <Build Include="Staging\Stored Procedures\usp_Process_ONS_Postcodes.sql" />
     <Build Include="Staging\Stored Procedures\usp_RemovedProcessedRecords.sql" />
+    <Build Include="dbo\Stored Procedures\usp_DisplayDeploymentProperties.sql" />
+    <Build Include="Security\Role_DataProcessor.sql" />
+    <Build Include="Security\Role_DataViewer.sql" />
+    <Build Include="Security\User_DsciUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ESFA.DC.Data.Postcodes.Database.refactorlog" />
@@ -120,9 +125,12 @@
       <DefaultValue>Local</DefaultValue>
       <Value>$(SqlCmdVar__5)</Value>
     </SqlCmdVariable>
+    <SqlCmdVariable Include="DsciUserPassword">
+      <DefaultValue>NotUseLocally##</DefaultValue>
+      <Value>$(SqlCmdVar__7)</Value>
+    </SqlCmdVariable>
     <SqlCmdVariable Include="RELEASE_RELEASENAME">
-      <DefaultValue>
-      </DefaultValue>
+      <DefaultValue>From Dev Machine</DefaultValue>
       <Value>$(SqlCmdVar__6)</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="ROUserPassword">

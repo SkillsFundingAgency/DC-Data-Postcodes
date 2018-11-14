@@ -50,25 +50,28 @@ ELSE
 	EXEC sp_updateextendedproperty @name = N'ReleaseName', @value = '$(BUILD_BRANCHNAME)';  
 GO
 
-IF EXISTS (SELECT * FROM [sys].[objects] WHERE [type] = 'V' AND Name = 'DisplayDeploymentProperties_VW')
-BEGIN 
-	DROP VIEW [dbo].[DisplayDeploymentProperties_VW];
-END
-
-GO
-EXEC ('CREATE VIEW [dbo].[DisplayDeploymentProperties_VW]
-AS
-	SELECT name, value 
-	FROM fn_listextendedproperty(default, default, default, default, default, default, default);  
-	');
-
-GO
+DROP VIEW IF EXISTS [dbo].[DisplayDeploymentProperties_VW];
 
 GO
 RAISERROR('		   Update User Account Passwords',10,1) WITH NOWAIT;
 GO
+
+ALTER ROLE [db_datawriter] DROP MEMBER [PostCode_RW_User];
+GO
+ALTER ROLE [db_datareader] DROP MEMBER [PostCode_RW_User];
+GO
+ALTER ROLE [db_datareader] DROP MEMBER [PostCode_RO_User];
+GO
+
+RAISERROR('		       RO User',10,1) WITH NOWAIT;
 ALTER USER [PostCode_RO_User] WITH PASSWORD = N'$(ROUserPassword)';
+GO
+RAISERROR('		       RW User',10,1) WITH NOWAIT;
 ALTER USER [PostCode_RW_User] WITH PASSWORD = N'$(RWUserPassword)';
+GO
+RAISERROR('		       DSCI User',10,1) WITH NOWAIT;
+ALTER USER [User_DSCI] WITH PASSWORD = N'$(DsciUserPassword)';
+GO
 
 GO
 RAISERROR('Completed',10,1) WITH NOWAIT;

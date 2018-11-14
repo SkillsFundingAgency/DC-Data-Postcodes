@@ -4,22 +4,26 @@
     <TargetDatabaseName>Postcodes</TargetDatabaseName>
     <DeployScriptFileName>ESFA.DC.Data.Postcodes.Database.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=(local);Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="ROUserPassword">
-      <Value>NotUsedLocally!</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="RWUserPassword">
-      <Value>NotUsedLocally!!</Value>
+    <SqlCmdVariable Include="BUILD_BRANCHNAME">
+      <Value>Local</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="BUILD_BUILDNUMBER">
-      <Value>X.Y.Z-LocalDev</Value>
+      <Value>0.0.0</Value>
     </SqlCmdVariable>
-    <SqlCmdVariable Include="BUILD_BRANCHNAME">
-      <Value>Local Machine</Value>
+    <SqlCmdVariable Include="DsciUserPassword">
+      <Value>NotUseLocally##</Value>
     </SqlCmdVariable>
     <SqlCmdVariable Include="RELEASE_RELEASENAME">
-      <Value>From Local Machine</Value>
+      <Value>From Dev Machine</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="ROUserPassword">
+      <Value>NotUseLocally</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="RWUserPassword">
+      <Value>NotUseLocally#</Value>
     </SqlCmdVariable>
   </ItemGroup>
 </Project>
